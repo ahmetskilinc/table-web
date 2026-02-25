@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Database, Filter, SortAsc } from "lucide-react";
-import { faqs, features, releaseUrl } from "./_data";
+import { faqs, features, releaseUrl } from "./-data";
 
 export const Route = createFileRoute("/")({ component: LandingPage });
 
@@ -14,26 +14,33 @@ function LandingPage() {
       <div className="relative z-10">
         <header className="fixed top-0 left-0 right-0 z-20 border-b border-white/10 bg-[#08090bcc] backdrop-blur-md">
           <div className="mx-auto flex h-16 w-[min(1120px,calc(100%-2.5rem))] items-center justify-between gap-4 max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <a href="#top" className="inline-flex items-center gap-2 font-bold tracking-[-0.01em]">
+            <a
+              href="#top"
+              data-track="nav_logo_click"
+              data-track-label="table-logo"
+              className="inline-flex items-center gap-2 font-bold tracking-[-0.01em]"
+            >
               <span className="h-2.5 w-2.5 rounded-full bg-[#0a84ff] shadow-[0_0_0_4px_rgba(10,132,255,0.2)]" />
               <span>Table</span>
             </a>
             <nav className="inline-flex items-center gap-6 text-[0.93rem] text-[#f5f5f7bf] max-md:hidden">
-              <a href="#features" className="no-underline hover:text-white">
+              <a href="#features" data-track="nav_features_click" className="no-underline hover:text-white">
                 Features
               </a>
-              <a href="#screenshots" className="no-underline hover:text-white">
+              <a href="#screenshots" data-track="nav_screenshots_click" className="no-underline hover:text-white">
                 Screenshots
               </a>
-              <a href="#pricing" className="no-underline hover:text-white">
+              <a href="#pricing" data-track="nav_pricing_click" className="no-underline hover:text-white">
                 Pricing
               </a>
-              <a href="#faq" className="no-underline hover:text-white">
+              <a href="#faq" data-track="nav_faq_click" className="no-underline hover:text-white">
                 FAQ
               </a>
             </nav>
             <a
               href={releaseUrl}
+              data-track="release_cta_nav_click"
+              data-track-label="github-releases-nav"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center rounded-[10px] border border-white/20 px-4 py-3 text-[0.92rem] font-semibold text-[#f5f5f7e6] no-underline transition hover:border-white/35 hover:bg-white/5"
@@ -58,6 +65,8 @@ function LandingPage() {
               <div className="mt-6 flex flex-wrap gap-3 max-md:flex-col">
                 <a
                   href={releaseUrl}
+                  data-track="release_cta_hero_primary_click"
+                  data-track-label="view-on-github-releases-hero"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-[#0a84ff] px-4 py-3 text-[0.92rem] font-semibold text-white no-underline transition hover:bg-[#0077ea] max-md:w-full"
@@ -67,6 +76,7 @@ function LandingPage() {
                 </a>
                 <a
                   href="#features"
+                  data-track="hero_secondary_features_click"
                   className="inline-flex items-center justify-center rounded-[10px] border border-white/20 px-4 py-3 text-[0.92rem] font-semibold text-[#f5f5f7e6] no-underline transition hover:border-white/35 hover:bg-white/5 max-md:w-full"
                 >
                   See Features
@@ -155,6 +165,8 @@ function LandingPage() {
                 </ul>
                 <a
                   href={releaseUrl}
+                  data-track="release_cta_pricing_click"
+                  data-track-label="download-from-releases-pricing"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-[10px] bg-[#0a84ff] px-4 py-3 text-[0.92rem] font-semibold text-white no-underline transition hover:bg-[#0077ea]"
@@ -187,6 +199,8 @@ function LandingPage() {
               <p className="mx-auto mb-5 mt-2 max-w-[50ch] text-[#f5f5f7ad]">Get the latest release and start connecting your Postgres databases in minutes.</p>
               <a
                 href={releaseUrl}
+                data-track="release_cta_final_click"
+                data-track-label="view-on-github-releases-final"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-[#0a84ff] px-4 py-3 text-[0.92rem] font-semibold text-white no-underline transition hover:bg-[#0077ea]"
@@ -201,6 +215,16 @@ function LandingPage() {
         <footer className="mt-9 border-t border-white/10">
           <div className="mx-auto flex min-h-[62px] w-[min(1120px,calc(100%-2.5rem))] items-center justify-between text-[0.85rem] text-[#f5f5f794] max-md:w-[min(1120px,calc(100%-1.4rem))] max-md:flex-col max-md:gap-1.5 max-md:py-4">
             <p>© {new Date().getFullYear()} Table</p>
+            <a
+              href={releaseUrl}
+              data-track="release_cta_footer_click"
+              data-track-label="github-releases-footer"
+              target="_blank"
+              rel="noreferrer"
+              className="no-underline text-[#f5f5f7c7] hover:text-white"
+            >
+              GitHub Releases
+            </a>
           </div>
         </footer>
       </div>
