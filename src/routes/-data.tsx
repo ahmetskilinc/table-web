@@ -48,26 +48,26 @@ export const features = [
 export const faqs = [
   {
     q: "Does Table work with local and cloud Postgres?",
-    a: "Yes. You can connect to local Postgres, Neon, Supabase, RDS, and other hosted providers.",
+    a: "Yes.",
   },
   {
     q: "Can I connect with a full connection string?",
-    a: "Yes. The connection dialog supports both field-based input and direct Postgres connection strings.",
+    a: "Yes.",
   },
   {
     q: "Is my connection password stored safely?",
-    a: "Yes. Credentials are encrypted and stored with OS-backed secure storage through Electron safeStorage.",
+    a: "Yes.",
   },
   {
     q: "Can I edit and delete table rows?",
-    a: "Yes. Inline updates, inserts, and deletes are supported for tables with primary keys.",
+    a: "Yes.",
   },
   {
     q: "Does Table include updates?",
-    a: "Yes. The desktop app is configured with release-based auto-update support.",
+    a: "Yes.",
   },
   {
     q: "How much does Table cost?",
-    a: "Table is currently free while features continue to expand.",
+    a: "Nothing.",
   },
 ];
