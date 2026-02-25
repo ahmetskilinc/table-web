@@ -3,8 +3,7 @@ import { createScript, isScriptInjected, track } from '@databuddy/sdk'
 type EventProps = Record<string, string | number | boolean>
 
 function clientId(): string | undefined {
-  const meta = import.meta as ImportMeta & { env: Record<string, string | undefined> }
-  return meta.env.VITE_DATABUDDY_CLIENT_ID
+  return import.meta.env?.VITE_DATABUDDY_CLIENT_ID
 }
 
 function normalizeText(value: string | null | undefined): string | undefined {
