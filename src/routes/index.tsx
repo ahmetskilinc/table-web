@@ -14,12 +14,7 @@ function LandingPage() {
       <div className="relative z-10">
         <header className="fixed top-0 left-0 right-0 z-20 border-b border-white/10 bg-[#08090bcc] backdrop-blur-md">
           <div className="mx-auto flex h-16 w-[min(1120px,calc(100%-2.5rem))] items-center justify-between gap-4 max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <a
-              href="#top"
-              data-track="nav_logo_click"
-              data-track-label="table-logo"
-              className="inline-flex items-center gap-2 font-bold tracking-[-0.01em]"
-            >
+            <a href="#top" data-track="nav_logo_click" data-track-label="table-logo" className="inline-flex items-center gap-2 font-bold tracking-[-0.01em]">
               <span className="h-2.5 w-2.5 rounded-full bg-[#0a84ff] shadow-[0_0_0_4px_rgba(10,132,255,0.2)]" />
               <span>Table</span>
             </a>
@@ -37,16 +32,6 @@ function LandingPage() {
                 FAQ
               </a>
             </nav>
-            <a
-              href={releaseUrl}
-              data-track="release_cta_nav_click"
-              data-track-label="github-releases-nav"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-[10px] border border-white/20 px-4 py-3 text-[0.92rem] font-semibold text-[#f5f5f7e6] no-underline transition hover:border-white/35 hover:bg-white/5"
-            >
-              GitHub Releases
-            </a>
           </div>
         </header>
 
@@ -215,16 +200,6 @@ function LandingPage() {
         <footer className="mt-9 border-t border-white/10">
           <div className="mx-auto flex min-h-[62px] w-[min(1120px,calc(100%-2.5rem))] items-center justify-between text-[0.85rem] text-[#f5f5f794] max-md:w-[min(1120px,calc(100%-1.4rem))] max-md:flex-col max-md:gap-1.5 max-md:py-4">
             <p>© {new Date().getFullYear()} Table</p>
-            <a
-              href={releaseUrl}
-              data-track="release_cta_footer_click"
-              data-track-label="github-releases-footer"
-              target="_blank"
-              rel="noreferrer"
-              className="no-underline text-[#f5f5f7c7] hover:text-white"
-            >
-              GitHub Releases
-            </a>
           </div>
         </footer>
       </div>
