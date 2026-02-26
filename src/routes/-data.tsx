@@ -48,26 +48,26 @@ export const features = [
 export const faqs = [
   {
     q: "Does Table work with local and cloud Postgres?",
-    a: "Yes.",
+    a: "Yes. Connect to localhost, Docker, or any cloud provider like Neon, Supabase, or AWS RDS.",
   },
   {
     q: "Can I connect with a full connection string?",
-    a: "Yes.",
+    a: "Yes. Paste your connection string and Table will parse it automatically—no manual field entry needed.",
   },
   {
     q: "Is my connection password stored safely?",
-    a: "Yes.",
+    a: "Yes. Credentials are encrypted using your system's secure keychain.",
   },
   {
     q: "Can I edit and delete table rows?",
-    a: "Yes.",
+    a: "Yes. Edit cells inline, insert new rows, or delete existing ones—all with primary key validation to keep your data safe.",
   },
   {
     q: "Does Table include updates?",
-    a: "Yes.",
+    a: "Yes. You'll get notified when new versions are available, and updates are free forever.",
   },
   {
     q: "How much does Table cost?",
-    a: "Nothing.",
+    a: "Nothing. Table is completely free with no limits on connections, queries, or features.",
   },
 ];

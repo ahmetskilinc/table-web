@@ -1,109 +1,131 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Database, Filter, SortAsc } from "lucide-react";
+import { ArrowRight, Database, Filter, SortAsc, Star } from "lucide-react";
 import { faqs, features, releaseUrl } from "./-data";
 
 export const Route = createFileRoute("/")({ component: LandingPage });
 
 function LandingPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#08090b] text-[#f5f5f7]">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#09090b] text-[#fafafa]">
+      {/* Skip link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-1.5 focus:text-sm focus:text-black focus:outline-none"
+      >
+        Skip to main content
+      </a>
+
+      {/* Subtle gradient accent */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-56 right-[-120px] h-[500px] w-[900px] rounded-full bg-[#0a84ff]/20 blur-3xl" />
-        <div className="absolute -top-44 left-[-180px] h-[420px] w-[780px] rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute -top-40 right-[-80px] h-[400px] w-[600px] rounded-full bg-[#3b82f6]/10 blur-[120px]" />
       </div>
-      <div className="relative z-10">
-        <header className="fixed top-0 left-0 right-0 z-20 border-b border-white/10 bg-[#08090bcc] backdrop-blur-md">
-          <div className="mx-auto flex h-16 w-[min(1120px,calc(100%-2.5rem))] items-center justify-between gap-4 max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <a href="#top" data-track="nav_logo_click" data-track-label="table-logo" className="inline-flex items-center gap-2 font-bold tracking-[-0.01em]">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#0a84ff] shadow-[0_0_0_4px_rgba(10,132,255,0.2)]" />
+
+      <div id="main-content" className="relative z-10">
+        {/* Minimal header */}
+        <header className="fixed top-0 left-0 right-0 z-20 border-b border-white/5 bg-[#09090b]/80 backdrop-blur-sm">
+          <div className="mx-auto flex h-12 w-[min(1000px,calc(100%-2rem))] items-center justify-between">
+            <a
+              href="#top"
+              aria-label="Table - Back to top"
+              className="flex items-center gap-1.5 text-sm font-medium tracking-tight"
+            >
+              <span className="h-2 w-2 rounded-full bg-[#3b82f6]" />
               <span>Table</span>
             </a>
-            <nav className="inline-flex items-center gap-6 text-[0.93rem] text-[#f5f5f7bf] max-md:hidden">
-              <a href="#features" data-track="nav_features_click" className="no-underline hover:text-white">
-                Features
-              </a>
-              <a href="#screenshots" data-track="nav_screenshots_click" className="no-underline hover:text-white">
-                Screenshots
-              </a>
-              <a href="#pricing" data-track="nav_pricing_click" className="no-underline hover:text-white">
-                Pricing
-              </a>
-              <a href="#faq" data-track="nav_faq_click" className="no-underline hover:text-white">
-                FAQ
-              </a>
+            <nav aria-label="Main navigation" className="flex items-center gap-5 text-[13px] text-[#a1a1aa] max-md:hidden">
+              <a href="#features" className="transition-colors hover:text-white">Features</a>
+              <a href="#screenshots" className="transition-colors hover:text-white">Screenshots</a>
+              <a href="#pricing" className="transition-colors hover:text-white">Pricing</a>
+              <a href="#faq" className="transition-colors hover:text-white">FAQ</a>
             </nav>
           </div>
         </header>
 
-        <section id="top" className="px-0 pb-20 pt-52 max-md:pt-16">
-          <div className="mx-auto grid w-[min(1120px,calc(100%-2.5rem))] grid-cols-[1.2fr_0.8fr] items-center gap-10 max-md:w-[min(1120px,calc(100%-1.4rem))] max-md:grid-cols-1 max-md:gap-6">
+        {/* Hero */}
+        <section id="top" className="px-0 pb-16 pt-32 max-md:pt-24">
+          <div className="mx-auto grid w-[min(1000px,calc(100%-2rem))] grid-cols-[1.1fr_0.9fr] items-center gap-12 max-md:grid-cols-1 max-md:gap-8">
             <div>
-              <p className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.78rem] text-[#f5f5f7b8]">
-                PostgreSQL Desktop Client
-              </p>
-              <h1 className="m-0 max-w-[18ch] text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] tracking-[-0.04em]">
-                Query, inspect, and manage your Postgres database with speed.
+              <span className="inline-block rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-[#71717a]">
+                PostgreSQL Client
+              </span>
+              <h1 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-[1.1] tracking-tight">
+                Query, inspect, and manage Postgres with speed.
               </h1>
-              <p className="mt-5 max-w-[58ch] leading-[1.65] text-[#f5f5f7b8]">
-                Table is a native-feeling desktop app for local and cloud Postgres. Built for developers who want powerful data workflows without UI clutter.
+              <p className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-[#a1a1aa]">
+                A native desktop client that gets out of your way. Fast, focused, and built for developers who care about their data.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3 max-md:flex-col">
+
+              {/* Tight button group */}
+              <div className="mt-6 flex items-center gap-2">
                 <a
                   href={releaseUrl}
-                  data-track="release_cta_hero_primary_click"
-                  data-track-label="view-on-github-releases-hero"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-[#0a84ff] px-4 py-3 text-[0.92rem] font-semibold text-white no-underline transition hover:bg-[#0077ea] max-md:w-full"
+                  className="group inline-flex items-center gap-1.5 rounded bg-[#3b82f6] px-3 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-[#2563eb]"
                 >
-                  <span>View on GitHub Releases</span>
-                  <ArrowRight className="size-4" />
+                  <span>Download</span>
+                  <ArrowRight aria-hidden="true" className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a
                   href="#features"
-                  data-track="hero_secondary_features_click"
-                  className="inline-flex items-center justify-center rounded-[10px] border border-white/20 px-4 py-3 text-[0.92rem] font-semibold text-[#f5f5f7e6] no-underline transition hover:border-white/35 hover:bg-white/5 max-md:w-full"
+                  className="inline-flex items-center rounded border border-white/10 bg-transparent px-3 py-1.5 text-[13px] font-medium text-[#e4e4e7] transition-colors hover:bg-white/5"
                 >
-                  See Features
+                  Learn more
                 </a>
               </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {["macOS app", "Secure credentials", "Fast grid performance"].map((tag) => (
-                  <span key={tag} className="rounded-full border border-white/10 px-2.5 py-1 text-[0.78rem] text-[#f5f5f794]">
-                    {tag}
-                  </span>
-                ))}
+
+              {/* Social proof */}
+              <div className="mt-6 border-t border-white/5 pt-4">
+                <a
+                  href="https://github.com/ahmetskilinc/table/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-[12px] text-[#71717a] transition-colors hover:text-white"
+                >
+                  <Star aria-hidden="true" className="size-3" />
+                  <span>Star on GitHub</span>
+                </a>
               </div>
             </div>
-            <div className="overflow-hidden rounded-[14px] border border-white/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))]">
-              <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3 font-mono text-[0.82rem] text-[#f5f5f7c2]">
-                <Database className="size-4" />
-                <span>Connected: neondb_owner@ep-.../postgres</span>
+
+            {/* Terminal-style demo */}
+            <div className="overflow-hidden rounded border border-white/10 bg-[#0c0c0f] font-mono text-[12px]">
+              <div className="flex items-center gap-1.5 border-b border-white/5 px-3 py-2">
+                <span className="h-2 w-2 rounded-full bg-[#ef4444]/60" />
+                <span className="h-2 w-2 rounded-full bg-[#eab308]/60" />
+                <span className="h-2 w-2 rounded-full bg-[#22c55e]/60" />
               </div>
-              <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3 font-mono text-[0.82rem] text-[#f5f5f7c2]">
-                <Filter className="size-4" />
-                <span>WHERE email ILIKE '%@gmail.com'</span>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-3 font-mono text-[0.82rem] text-[#f5f5f7c2]">
-                <SortAsc className="size-4" />
-                <span>Sorted by created_at DESC</span>
+              <div className="space-y-0">
+                <div className="flex items-center gap-2 border-b border-white/5 px-3 py-2 text-[#71717a]">
+                  <Database aria-hidden="true" className="size-3" />
+                  <span>neondb_owner@ep-.../postgres</span>
+                </div>
+                <div className="flex items-center gap-2 border-b border-white/5 px-3 py-2 text-[#71717a]">
+                  <Filter aria-hidden="true" className="size-3" />
+                  <span className="text-[#a1a1aa]">WHERE</span> email ILIKE '%@gmail.com'
+                </div>
+                <div className="flex items-center gap-2 px-3 py-2 text-[#71717a]">
+                  <SortAsc aria-hidden="true" className="size-3" />
+                  <span className="text-[#a1a1aa]">ORDER BY</span> created_at DESC
+                </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Features - compact grid */}
         <section id="features" className="py-12">
-          <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <h2 className="m-0 text-[clamp(1.4rem,3.2vw,2rem)] tracking-[-0.03em]">Everything you need for daily Postgres work</h2>
-            <p className="mt-3 leading-relaxed text-[#f5f5f7a8]">Focused tooling for browsing schemas, writing SQL, and editing data safely.</p>
-            <div className="mt-6 grid grid-cols-4 gap-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+          <div className="mx-auto w-[min(1000px,calc(100%-2rem))]">
+            <h2 className="text-lg font-semibold tracking-tight">Features</h2>
+            <p className="mt-1 text-[14px] text-[#71717a]">Everything you need for daily Postgres work.</p>
+            <div className="mt-5 grid grid-cols-4 gap-px overflow-hidden rounded border border-white/10 bg-white/5 max-lg:grid-cols-2 max-md:grid-cols-1">
               {features.map((feature) => {
                 const Icon = feature.icon;
                 return (
-                  <article key={feature.title} className="rounded-xl border border-white/10 bg-white/2 p-4">
-                    <Icon className="h-5 w-5 text-[#0a84ff]" />
-                    <h3 className="mb-0 mt-3 text-[0.98rem] tracking-[-0.01em]">{feature.title}</h3>
-                    <p className="mb-0 mt-2 text-[0.9rem] leading-[1.45] text-[#f5f5f7a6]">{feature.description}</p>
+                  <article key={feature.title} className="bg-[#09090b] p-4 transition-colors hover:bg-[#0c0c0f]">
+                    <Icon aria-hidden="true" className="h-4 w-4 text-[#3b82f6]" />
+                    <h3 className="mt-2 text-[13px] font-medium">{feature.title}</h3>
+                    <p className="mt-1 text-[12px] leading-relaxed text-[#71717a]">{feature.description}</p>
                   </article>
                 );
               })}
@@ -111,94 +133,107 @@ function LandingPage() {
           </div>
         </section>
 
+        {/* Screenshots */}
         <section id="screenshots" className="py-12">
-          <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <h2 className="m-0 text-[clamp(1.4rem,3.2vw,2rem)] tracking-[-0.03em]">Built for real tables and real workloads</h2>
-            <p className="mt-3 leading-relaxed text-[#f5f5f7a8]">Native-feeling UI with practical features for production databases.</p>
-            <div className="mt-6 grid grid-cols-3 gap-4 max-lg:grid-cols-1">
-              <figure className="m-0 overflow-hidden rounded-xl border border-white/10 bg-white/2">
-                <img src="/screenshots/query-editor.svg" alt="SQL editor in Table app" />
-                <figcaption className="border-t border-white/10 px-3.5 py-3 text-[0.88rem] text-[#f5f5f7b8]">Multi-tab SQL editor with result panel</figcaption>
-              </figure>
-              <figure className="m-0 overflow-hidden rounded-xl border border-white/10 bg-white/2">
-                <img src="/screenshots/table-browser.svg" alt="Table browser with sorting and filtering" />
-                <figcaption className="border-t border-white/10 px-3.5 py-3 text-[0.88rem] text-[#f5f5f7b8]">
-                  Table browser with sort, filter, and row selection
-                </figcaption>
-              </figure>
-              <figure className="m-0 overflow-hidden rounded-xl border border-white/10 bg-white/2">
-                <img src="/screenshots/row-inspector.svg" alt="Row inspector showing full JSON details" />
-                <figcaption className="border-t border-white/10 px-3.5 py-3 text-[0.88rem] text-[#f5f5f7b8]">Row inspector for full record details</figcaption>
-              </figure>
+          <div className="mx-auto w-[min(1000px,calc(100%-2rem))]">
+            <h2 className="text-lg font-semibold tracking-tight">Screenshots</h2>
+            <p className="mt-1 text-[14px] text-[#71717a]">Native UI built for production databases.</p>
+            <div className="mt-5 grid grid-cols-3 gap-3 max-lg:grid-cols-1">
+              {[
+                { src: "/screenshots/query-editor.svg", alt: "SQL editor", caption: "SQL editor" },
+                { src: "/screenshots/table-browser.svg", alt: "Table browser", caption: "Table browser" },
+                { src: "/screenshots/row-inspector.svg", alt: "Row inspector", caption: "Row inspector" },
+              ].map((item) => (
+                <figure key={item.src} className="m-0 overflow-hidden rounded border border-white/10 bg-[#0c0c0f]">
+                  <img src={item.src} alt={item.alt} className="w-full" />
+                  <figcaption className="border-t border-white/5 px-3 py-2 text-[12px] text-[#71717a]">{item.caption}</figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </section>
 
+        {/* Pricing - minimal */}
         <section id="pricing" className="py-12">
-          <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <h2 className="m-0 text-[clamp(1.4rem,3.2vw,2rem)] tracking-[-0.03em]">Simple pricing</h2>
-            <p className="mt-3 leading-relaxed text-[#f5f5f7a8]">Start using Table today.</p>
+          <div className="mx-auto w-[min(1000px,calc(100%-2rem))]">
+            <h2 className="text-lg font-semibold tracking-tight">Pricing</h2>
             <div className="mt-5 flex justify-center">
-              <article className="w-full max-w-[460px] rounded-[14px] border border-white/15 bg-white/2 p-5">
-                <p className="m-0 text-[0.9rem] text-[#f5f5f7b3]">Table</p>
-                <p className="mb-4 mt-1 text-[2rem] font-bold tracking-[-0.03em]">Free</p>
-                <ul className="mb-4 grid list-disc gap-2 pl-5 text-[#f5f5f7b8]">
-                  <li>Connect local and cloud Postgres</li>
-                  <li>Schema explorer and SQL editor</li>
-                  <li>Grid editing, sorting, filtering</li>
-                  <li>Query history and row inspector</li>
+              <article className="w-full max-w-sm rounded border border-white/10 bg-[#0c0c0f] p-5">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-[13px] text-[#71717a]">Table</span>
+                  <span className="text-2xl font-semibold">$0</span>
+                </div>
+                <p className="mt-1 text-[12px] text-[#52525b]">Free forever. No signup.</p>
+                <ul className="mt-4 space-y-1.5 text-[13px] text-[#a1a1aa]">
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-[#3b82f6]" />
+                    Local and cloud Postgres
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-[#3b82f6]" />
+                    Schema explorer + SQL editor
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-[#3b82f6]" />
+                    Grid editing and filtering
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-[#3b82f6]" />
+                    Query history
+                  </li>
                 </ul>
                 <a
                   href={releaseUrl}
-                  data-track="release_cta_pricing_click"
-                  data-track-label="download-from-releases-pricing"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-[10px] bg-[#0a84ff] px-4 py-3 text-[0.92rem] font-semibold text-white no-underline transition hover:bg-[#0077ea]"
+                  className="mt-4 flex w-full items-center justify-center rounded bg-white px-3 py-1.5 text-[13px] font-medium !text-[#09090b] transition-colors hover:bg-[#e4e4e7]"
                 >
-                  Download from Releases
+                  Download
                 </a>
               </article>
             </div>
           </div>
         </section>
 
+        {/* FAQ - compact */}
         <section id="faq" className="py-12">
-          <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <h2 className="m-0 text-[clamp(1.4rem,3.2vw,2rem)] tracking-[-0.03em]">FAQ</h2>
-            <div className="mt-5 grid gap-3">
+          <div className="mx-auto w-[min(1000px,calc(100%-2rem))]">
+            <h2 className="text-lg font-semibold tracking-tight">FAQ</h2>
+            <div className="mt-5 divide-y divide-white/5">
               {faqs.map((item) => (
-                <article key={item.q} className="rounded-xl border border-white/10 bg-white/2 p-4">
-                  <h3 className="m-0 text-[0.96rem]">{item.q}</h3>
-                  <p className="mb-0 mt-2 text-[0.9rem] leading-[1.55] text-[#f5f5f7ad]">{item.a}</p>
+                <article key={item.q} className="py-3">
+                  <h3 className="text-[13px] font-medium">{item.q}</h3>
+                  <p className="mt-1 text-[13px] text-[#71717a]">{item.a}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Final CTA - minimal */}
         <section className="py-12">
-          <div className="mx-auto w-[min(1120px,calc(100%-2.5rem))] max-md:w-[min(1120px,calc(100%-1.4rem))]">
-            <div className="rounded-[14px] border border-white/15 bg-white/2 px-6 py-7 text-center">
-              <h2 className="m-0 tracking-[-0.02em]">Ready to try Table?</h2>
-              <p className="mx-auto mb-5 mt-2 max-w-[50ch] text-[#f5f5f7ad]">Get the latest release and start connecting your Postgres databases in minutes.</p>
+          <div className="mx-auto w-[min(1000px,calc(100%-2rem))]">
+            <div className="flex items-center justify-between rounded border border-white/10 bg-[#0c0c0f] px-5 py-4">
+              <div>
+                <p className="text-[14px] font-medium">Ready to try Table?</p>
+                <p className="mt-0.5 text-[13px] text-[#71717a]">Connect your first database in under a minute.</p>
+              </div>
               <a
                 href={releaseUrl}
-                data-track="release_cta_final_click"
-                data-track-label="view-on-github-releases-final"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-[#0a84ff] px-4 py-3 text-[0.92rem] font-semibold text-white no-underline transition hover:bg-[#0077ea]"
+                className="group inline-flex items-center gap-1.5 rounded bg-[#3b82f6] px-3 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-[#2563eb]"
               >
-                <span>View on GitHub Releases</span>
-                <ArrowRight className="size-4" />
+                <span>Download</span>
+                <ArrowRight aria-hidden="true" className="size-3.5 transition-transform group-hover:translate-x-0.5" />
               </a>
             </div>
           </div>
         </section>
 
-        <footer className="mt-9 border-t border-white/10">
-          <div className="mx-auto flex min-h-[62px] w-[min(1120px,calc(100%-2.5rem))] items-center justify-between text-[0.85rem] text-[#f5f5f794] max-md:w-[min(1120px,calc(100%-1.4rem))] max-md:flex-col max-md:gap-1.5 max-md:py-4">
+        {/* Footer - minimal */}
+        <footer className="border-t border-white/5">
+          <div className="mx-auto flex h-12 w-[min(1000px,calc(100%-2rem))] items-center text-[12px] text-[#52525b]">
             <p>© {new Date().getFullYear()} Table</p>
           </div>
         </footer>
